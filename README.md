@@ -15,7 +15,7 @@ On which days did more than 1% of requests lead to errors?
 
 1.Install Vagrant and VirtualBox.
 
-2.Download or Clone fullstack-nanodegree-vm repository.
+2.Download or Clone fullstack-nanodegree-vm repository.Link: https://github.com/udacity/fullstack-nanodegree-vm
 
 3.Download the data here: https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip
 
@@ -51,8 +51,8 @@ CREATE view add_all as SELECT date(time) as date, count(status) as numbers FROM 
 
 ### Files
 
-LogsAnalysisProject.py This is the program for the internal reporting tool
+LogsAnalysisProject.py: This is the program for the internal reporting tool
 
-report.txt This file contains the output of the program
+report.txt This file: contains the output of the program
 
 ReadME
