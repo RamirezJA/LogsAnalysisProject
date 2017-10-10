@@ -1,4 +1,4 @@
-
+# Logs Analysis Project
 
 This project will allow you to practice your SQL database skills. The project allows you to interact with a live database both from the command line and from the code. In the project you can explore a database with over a million rows. The project uses complex queries that are used to draw business conclusions from the data. The project works with data that could have come from a real-world web application, with fields representing information that a web server would record, such as HTTP status codes and URL paths. The web server and the reporting tool both connect to the same database, allowing information to flow from the web server into the report.
 
