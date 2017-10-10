@@ -37,8 +37,6 @@ CREATE view add_all as SELECT date(time) as date, count(status) as numbers FROM 
 
 10.From the vagrant directory run python logsanalysisproject.py
 
-11.The report.txt file will now be created
-
 12.Shutdown the VM with CTRL + D.
 
 ### Prerequisites
