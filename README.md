@@ -53,6 +53,6 @@ CREATE view add_all as SELECT date(time) as date, count(status) as numbers FROM 
 
 LogsAnalysisProject.py This is the program for the internal reporting tool
 
-report.txt This file contains the answers to the questions listed above
+report.txt This file contains the output of the program
 
 ReadME
