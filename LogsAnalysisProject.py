@@ -19,8 +19,8 @@ def top_articles():
     results = cur.fetchall()
     print "1. Three most popular articles of all time"
     print "-" * 50
-    for line in results:
-        print line
+    for title, views in results:
+         print "    {}  --  {} views".format(title, views)
     db.close()
 
 
@@ -36,18 +36,18 @@ def top_authors():
     results = cur.fetchall()
     print "\n2. Who are the most popular article authors of all time?"
     print "-" * 50
-    for line in results:
-        print line
+    for title, views in results:
+         print "    {}  --  {} views".format(title, views)
     db.close()
 
 
 def top_error():
     db, cur = dbconnect()
     cur.execute("""SELECT to_char(http_cuatros.date, 'MM/DD/YYYY'),
-                ROUND((http_cuatros.numbers/ add_all.numbers) * 100,  2) per
+                ROUND((100.0 * http_cuatros.numbers/ add_all.numbers), 2) per
                 FROM http_cuatros, add_all
                 WHERE http_cuatros.date = add_all.date
-                AND (((http_cuatros.numbers / add_all.numbers) * 100) > 1)
+                AND (((100.0 * http_cuatros.numbers / add_all.numbers)) > 1)
                 ORDER BY per desc;""")
     results = cur.fetchall()
     print "\n3. On which days did more than 1% of requests lead to errors?"
@@ -57,6 +57,7 @@ def top_error():
     db.close()
 
 
-top_articles()
-top_authors()
-top_error()
+if __name__ == "__main__":
+    top_articles()
+    top_authors()
+    top_error()
