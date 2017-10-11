@@ -60,6 +60,7 @@ def top_error():
     db.close()
 
 
-top_articles()
-top_authors()
-top_error()
+if __name__ == "__main__":
+    top_articles()
+    top_authors()
+    top_error()
