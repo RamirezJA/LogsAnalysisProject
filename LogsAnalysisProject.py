@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import psycopg2
 
 DB_NAME = "news"
@@ -13,14 +15,15 @@ def top_articles():
     db, cur = dbconnect()
     cur.execute("""SELECT articles.title, count(log.path) as amount
                 FROM articles, log
-                WHERE log.path Like concat('%', articles.slug, '%')
+                WHERE log.path = concat('/article/', articles.slug)
+                AND log.status = '200 OK'
                 GROUP BY articles.title
                 ORDER BY amount desc limit 3;""")
     results = cur.fetchall()
     print "1. Three most popular articles of all time"
     print "-" * 50
     for title, views in results:
-         print "    {}  --  {} views".format(title, views)
+        print "    {}  --  {} views".format(title, views)
     db.close()
 
 
@@ -37,14 +40,14 @@ def top_authors():
     print "\n2. Who are the most popular article authors of all time?"
     print "-" * 50
     for title, views in results:
-         print "    {}  --  {} views".format(title, views)
+        print "    {}  --  {} views".format(title, views)
     db.close()
 
 
 def top_error():
     db, cur = dbconnect()
     cur.execute("""SELECT to_char(http_cuatros.date, 'MM/DD/YYYY'),
-                ROUND((100.0 * http_cuatros.numbers/ add_all.numbers), 2) per
+                ROUND((100.0 * http_cuatros.numbers/ add_all.numbers),  2) per
                 FROM http_cuatros, add_all
                 WHERE http_cuatros.date = add_all.date
                 AND (((100.0 * http_cuatros.numbers / add_all.numbers)) > 1)
@@ -57,7 +60,6 @@ def top_error():
     db.close()
 
 
-if __name__ == "__main__":
-    top_articles()
-    top_authors()
-    top_error()
+top_articles()
+top_authors()
+top_error()
