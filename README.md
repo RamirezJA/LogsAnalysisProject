@@ -35,7 +35,7 @@ CREATE view add_all as SELECT date(time) as date, count(status) as numbers FROM 
 
 9.Return to the vagrant directory with \q 
 
-10.From the vagrant directory run python logsanalysisproject.py
+10.From the vagrant directory run python LogsAnalysisProject.py
 
 12.Shutdown the VM with CTRL + D.
 
